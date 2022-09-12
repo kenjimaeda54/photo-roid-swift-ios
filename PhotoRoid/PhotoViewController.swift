@@ -64,29 +64,28 @@ class PhotoViewController: UIViewController {
 //MARK: - UIImagePickerControllerDelegate,UINavigationControllerDelegate
 extension PhotoViewController:UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-		if	let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-			let width = image.size.width
-			let aspectRatio =  width / image.size.height
-			var smallSize: CGSize
-			//se aspectRatio > 1 e landscape,porque a largura e maior
-			if aspectRatio > 1 {
-				 smallSize = CGSize(width: 1000, height: 1000/aspectRatio)
-			}else {
-				smallSize = CGSize(width: 1000 * aspectRatio, height: 1000)
-			}
-		  
-			//redesenhar a imagem,contexto e uma area salva para desenhos
-			UIGraphicsBeginImageContext(smallSize)
-			image.draw(in: CGRect(x: 0, y: 0, width: smallSize.width, height: smallSize.height))
-			let imageSmall = UIGraphicsGetImageFromCurrentImageContext()
-			UIGraphicsEndImageContext()
-			//
-			
-			dismiss(animated: true) {
-				self.performSegue(withIdentifier: "effectsSegue", sender: imageSmall)
-			}
-			
-			
+		let originalImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+		let width = originalImage.size.width
+		let aspectRatio = width / originalImage.size.height
+		let smallSize: CGSize
+		
+		//se aspectRatio > 1 e landscape,porque a largura e maior
+		if aspectRatio > 1 {
+			smallSize = CGSize(width: 1000, height: 1000/aspectRatio)
+		}else {
+			smallSize  = CGSize(width: 1000 * aspectRatio, height: 1000)
 		}
+		
+		//redesenhar a imagem,contexto e uma area salva para desenhos
+		UIGraphicsBeginImageContext(smallSize)
+		originalImage.draw(in: CGRect(x: 0, y: 0, width: smallSize.width, height: smallSize.height))
+		let smallImage = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		//
+		
+		dismiss(animated: true) {
+			self.performSegue(withIdentifier: "effectsSegue", sender: smallImage)
+		}
+		
 	}
 }
