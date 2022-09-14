@@ -178,6 +178,9 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save your gallery"/>
+                                <connections>
+                                    <action selector="handleSavePhoto:" destination="BgD-66-C2m" eventType="touchUpInside" id="knR-rP-bC4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfe-oe-N7a">
                                 <rect key="frame" x="20" y="802" width="374" height="40"/>
@@ -190,6 +193,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Start again">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="handleStartAgain:" destination="BgD-66-C2m" eventType="touchUpInside" id="ucl-3C-DkW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hgg-v3-QBr"/>
@@ -212,6 +218,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YJc-4s-TJ3"/>
+                    <connections>
+                        <outlet property="imgPhoto" destination="9rE-8M-wcY" id="aXr-ry-nwE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8yI-Wf-2K3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

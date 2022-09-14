@@ -47,6 +47,13 @@ class EffectsViewController: UIViewController {
 		viLoading.isHidden = !show
 	}
 	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "finishSegue"{
+			let vc = segue.destination as! FinishViewController
+			vc.image = imgPhoto.image
+		}
+	}
+	
 }
 
 
