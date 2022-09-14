@@ -76,7 +76,8 @@ extension PhotoViewController:UIImagePickerControllerDelegate,UINavigationContro
 			smallSize  = CGSize(width: 1000 * aspectRatio, height: 1000)
 		}
 		
-		//redesenhar a imagem,contexto e uma area salva para desenhos
+		//redesenhar a imagem
+		//context e uma area salva para desenhos
 		UIGraphicsBeginImageContext(smallSize)
 		originalImage.draw(in: CGRect(x: 0, y: 0, width: smallSize.width, height: smallSize.height))
 		let smallImage = UIGraphicsGetImageFromCurrentImageContext()
