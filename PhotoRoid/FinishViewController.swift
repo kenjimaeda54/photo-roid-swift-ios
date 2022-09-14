@@ -33,13 +33,14 @@ class FinishViewController: UIViewController {
 		//alerta foi jogado na main
 		PHPhotoLibrary.shared().performChanges({
 			let createRequest = PHAssetChangeRequest.creationRequestForAsset(from: self.image)
-			let addRequestImg = PHAssetCollectionChangeRequest()
-			addRequestImg.addAssets([createRequest.placeholderForCreatedAsset] as! NSArray)
+			let addImageRequest = PHAssetCollectionChangeRequest()
+			addImageRequest.addAssets([createRequest.placeholderForCreatedAsset] as! NSArray)
+
+		}){(sucess,error) in
 			
-		}){[self](sucess,error) in
 			if sucess {
 				DispatchQueue.main.async {
-					self.alert(message: "Congralations your photo has been saved", title: "Sucess")
+					self.alert(message: "Your photo save with sucess", title: "Save")
 				}
 				return
 			}
@@ -49,19 +50,19 @@ class FinishViewController: UIViewController {
 	}
 	
 	@IBAction func handleSavePhoto(_ sender: UIButton) {
-		PHPhotoLibrary.requestAuthorization {[self] (status) in
+		PHPhotoLibrary.requestAuthorization {[self](status) in
 			switch status {
 			case .authorized:
 				savePhoto()
 			default:
 				alert(message: "To save we need to access your photo gallery", title: "Error")
 			}
-			
 		}
 		
 	}
 	
 	
 	@IBAction func handleStartAgain(_ sender: UIButton) {
+		navigationController?.popToRootViewController(animated: true)
 	}
 }
