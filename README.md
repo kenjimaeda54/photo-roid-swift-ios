@@ -1,7 +1,7 @@
 # Photo Roid
 Aplicativo para aplicar filtros em fotos e salvar
 
-##Motivação
+## Motivação
 Aprende como pegar foto, aplicar filtros e salvar no device
 
 ## Feature
